@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B787 Style Bicycle Checklist</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #d0d0d0;
+            font-family: 'Segoe UI', 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .ecl-container {
+            background-color: #333333;
+            width: 700px;
+            height: 850px;
+            border: 2px solid #555;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Top Menu Bar */
+        .top-menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background-color: #444;
+            text-align: center;
+            border-bottom: 2px solid #222;
+        }
+
+        .menu-item {
+            padding: 10px;
+            border: 1px solid #555;
+            color: #ccc;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Checklist Content */
+        .content {
+            padding: 20px 40px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .title {
+            color: #ffb800; /* Amber color for warnings/titles */
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: #fff;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 22px;
+            border-bottom: 1px solid #555;
+        }
+
+        .item-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .check-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+	.check-box.checked {
+	    border-color: #00ff00;
+	    color: #00ff00;
+	}
+
+        .item-text {
+            color: #ffffff;
+            
+            letter-spacing: 1px;
+        }
+	
+	.checked ~ .item-text {
+    	    color: #00ff00; /* 當勾選框有 .checked 時，後面的文字變綠 */
+	}
+
+	.checked ~ .status {
+    	    color: #00ff00; /* 當勾選框有 .checked 時，後面的文字變綠 */
+	}
+
+	.checked ~ .dots {
+    	    border-bottom-color: #00ff00;
+	}
+        .dots {
+            flex-grow: 1;
+            border-bottom: 5px dotted #ffffff;
+            margin: 0 10px;
+            height: 12px;
+        }
+
+        .status {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Note Section */
+        .note {
+            color: #fff;
+            font-size: 14px;
+            margin-top: 20px;
+            padding: 10px;
+            border-left: 3px solid #777;
+        }
+
+        /* Bottom Buttons */
+        .bottom-menu {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: #333;
+            border-top: 2px solid #222;
+        }
+
+        .btn {
+            background-color: #666;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 2px;
+            font-size: 12px;
+            border: 1px solid #888;
+        }
+
+        .btn-active {
+            background-color: #888;
+        }
+
+        /* Scroll indicator simulation */
+        .scroll-bar {
+            position: absolute;
+            right: 0;
+            top: 60px;
+            bottom: 80px;
+            width: 40px;
+            background-color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ecl-container">
+    <div class="content">
+        <div class="title">▶ PRE-RIDE CHECKLIST ◀</div>
+
+        <div class="subtitle">一、車輛及含電系統</div>
+        
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">胎壓</div>
+            <div class="dots"></div>
+	    <div class="status">90-100psi</div>
+        </div>
+
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">輪圈</div>
+            <div class="dots"></div>
+            <div class="status">平衡正常</div>
+        </div>
+
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">煞車系統</div>
+            <div class="dots"></div>
+            <div class="status">正常</div>
+        </div>
+
+		<div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">踏板</div>
+            <div class="dots"></div>
+            <div class="status">正常</div>
+        </div>
+
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">鍊條</div>
+            <div class="dots"></div>
+            <div class="status">0-0.6磨損</div>
+        </div>
+
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">變速系統</div>
+            <div class="dots"></div>
+            <div class="status">正常</div>
+        </div>
+
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">前後燈光、功率計、碼表、心率帶</div>
+            <div class="dots"></div>
+            <div class="status">電量、運作正常</div>
+        </div>
+
+        <div class="subtitle">二、隨身工具</div>
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">內胎、補胎片、CO2、挖胎棒</div>
+            <div class="dots"></div>
+            <div class="status">STOWED</div>
+        </div>
+
+        <div class="subtitle">三、裝備補給</div>
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">安全帽、車衣、車褲</div>
+            <div class="dots"></div>
+            <div class="status">ON</div>
+        </div>
+        <div class="item-row">
+            <div class="check-box" onclick="this.classList.toggle('checked'); this.innerHTML = this.classList.contains('checked') ? '✓' : '';"></div>
+            <div class="item-text">果膠、水壺、錢包</div>
+            <div class="dots"></div>
+            <div class="status">LOADED</div>
+        </div>
+
+        <div class="note">
+            NOTE: 確保所有電子設備於前一天完成充電。<br>
+            Check Wuling weather conditions before departure.
+        </div>
+    </div>
+
+    <div class="bottom-menu">
+        <div class="btn">NORMAL</div>
+        <div class="btn">NOTES</div>
+        <div class="btn">CHKL OVRD</div>
+        <div class="btn">CHKL RESET</div>
+        <div class="btn btn-active">NON-NORMAL</div>
+    </div>
+</div>
+
+</body>
+</html>
